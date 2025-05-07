@@ -1,5 +1,5 @@
 {
-  "name": "playwright-flows",
+  "name": "donobu-papal-election-tests",
   "version": "1.0.0",
   "description": "This repository houses Typescript-based Playwright flows that were generated using Donobu.",
   "scripts": {
@@ -7,16 +7,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/donobu-inc/playwright-flows.git"
+    "url": "git+https://github.com/donobu-inc/donobu-papal-election-tests.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/donobu-inc/playwright-flows/issues"
+    "url": "https://github.com/donobu-inc/donobu-papal-election-tests/issues"
   },
-  "homepage": "https://github.com/donobu-inc/playwright-flows#readme",
+  "homepage": "https://github.com/donobu-inc/donobu-papal-election-tests#readme",
   "dependencies": {
-    "donobu": "^2.15.1",
-    "node-notifier": "^10.0.1"
+    "donobu": "^2.15.1"
   }
 }
