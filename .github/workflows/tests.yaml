@@ -1,30 +1,61 @@
-name: Run Donobu Papal Election Smoke Test
+name: Donobu Papal Election Smoke Test
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
+  # May 7–?  | Rome (CEST) → California (PDT) = –9 h
   schedule:
-    - cron: "0 12 * * *" # Runs daily at 12:00 UTC
-  workflow_dispatch:
+    # 01:00 PDT  (10:00 CEST first‑morning ballot ±30 min)
+    - cron: '0 1 7-14 5 *'
+    # 02:30 PDT  (12:00 CEST combined‑morning ballots)
+    - cron: '30 2 7-14 5 *'
+    # 08:00 PDT  (17:30 CEST first‑afternoon ballot)
+    - cron: '0 8 7-14 5 *'
+    # 09:30 PDT  (19:00 CEST combined‑afternoon ballots)
+    - cron: '30 9 7-14 5 *'
+  workflow_dispatch: {}
 
 jobs:
-  run-donobu-flows:
+  smoke-watch:
     runs-on: ubuntu-latest
+    timeout-minutes: 65          # 60‑min watch + 5‑min buffer
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: npm install && npx playwright install --with-deps
+      # Node + npm cache
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
 
-      - name: Run Playwright tests
-        id: run_tests
-        continue-on-error: true
+      # Cache Playwright browsers (~250 MB) between jobs
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-1
+
+      - name: Install deps
+        run: |
+          npm ci
+          npx playwright install --with-deps
+
+      # --- minute‑by‑minute loop ------------------------------------------
+      - name: Watch 60 minutes, test once a minute
         env:
           GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
           GOOGLE_GENERATIVE_AI_MODEL_NAME: 'gemini-2.0-flash'
           SELF_HEAL_TESTS_ENABLED: false
-        run: npx playwright test
+        run: |
+          echo "Starting 60‑minute smoke watch…"
+          for i in $(seq 1 60); do
+            echo "▶️  Attempt $i / 60"
+            if npx playwright test --project='Desktop Chrome'; then
+              echo "🎉  White smoke detected — stopping early."
+              exit 0                      # job ends
+            fi
+            echo "❌  No white smoke yet — sleeping 60 s"
+            sleep 60
+          done
+          echo "🕑  Window ended with no white smoke."
+          # Make the job red so dashboard shows “still no pope”
+          exit 1
