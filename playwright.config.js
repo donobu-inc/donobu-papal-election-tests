@@ -17,7 +17,7 @@ module.exports = defineConfig({
       use: {
         browserName: 'chromium',
         channel: 'chrome',
-        headless: false,
+        headless: true,
         video: 'on',
         recordVideo: {
           dir: 'test-results/videos/',
