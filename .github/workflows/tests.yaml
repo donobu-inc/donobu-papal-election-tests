@@ -1,16 +1,15 @@
 name: Donobu Papal Election Smoke Test
 
 on:
-  # May 7–?  | Rome (CEST) → California (PDT) = –9 h
   schedule:
-    # 01:00 PDT  (10:00 CEST first‑morning ballot ±30 min)
-    - cron: '0 1 7-14 5 *'
-    # 02:30 PDT  (12:00 CEST combined‑morning ballots)
-    - cron: '30 2 7-14 5 *'
-    # 08:00 PDT  (17:30 CEST first‑afternoon ballot)
-    - cron: '0 8 7-14 5 *'
-    # 09:30 PDT  (19:00 CEST combined‑afternoon ballots)
+    # start watch 30 min before 10:00 CEST → 07:30 UTC
+    - cron: '30 7 7-14 5 *'
+    # start watch 30 min before 12:00 CEST → 09:30 UTC
     - cron: '30 9 7-14 5 *'
+    # start watch 30 min before 17:30 CEST → 15:00 UTC
+    - cron: '0 15 7-14 5 *'
+    # start watch 30 min before 19:00 CEST → 16:30 UTC
+    - cron: '30 16 7-14 5 *'
   workflow_dispatch: {}
 
 jobs:

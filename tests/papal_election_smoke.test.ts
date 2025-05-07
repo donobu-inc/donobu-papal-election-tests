@@ -12,8 +12,8 @@ If the smoke is black or there is no smoke, the test should fail.`,
 };
 
 test(testTitle, testDetails, async ({ page }) => {
-  // Navigate to the live stream of Vatican Media
-  await page.goto('https://www.youtube.com/watch?v=J6MqpK91bEA');
+  // Navigate to the live stream of Sistine Chapel Chimney from MSNBC
+  await page.goto('https://www.youtube.com/watch?v=Qavn8bL2zOQ');
 
   // Check for the chimney for white smoke
   const chimneyCheck = await page.visuallyAssert({
