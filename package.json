@@ -1,0 +1,22 @@
+{
+  "name": "playwright-flows",
+  "version": "1.0.0",
+  "description": "This repository houses Typescript-based Playwright flows that were generated using Donobu.",
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/donobu-inc/playwright-flows.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/donobu-inc/playwright-flows/issues"
+  },
+  "homepage": "https://github.com/donobu-inc/playwright-flows#readme",
+  "dependencies": {
+    "donobu": "^2.15.1",
+    "node-notifier": "^10.0.1"
+  }
+}
