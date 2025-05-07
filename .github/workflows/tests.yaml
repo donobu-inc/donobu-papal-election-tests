@@ -27,4 +27,4 @@ jobs:
           GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
           GOOGLE_GENERATIVE_AI_MODEL_NAME: 'gemini-2.0-flash'
           SELF_HEAL_TESTS_ENABLED: false
-        run: npx playwright test --reporter=json | npm exec playwright-json-to-markdown >> $GITHUB_STEP_SUMMARY
+        run: npx playwright test
