@@ -8,12 +8,12 @@ const testDetails = {
 If white smoke is visible, the test should pass - a new pope has been elected.
 If the smoke is black or there is no smoke, the test should fail.`,
   },
-  timeout: 60000 // 1 minute timeout
+  timeout: 60_000 // 1 minute timeout
 };
 
 test(testTitle, testDetails, async ({ page }) => {
   // Navigate to the live stream of Vatican Media
-  await page.goto('https://www.youtube.com/watch?v=NsLRm7HFdaQ');
+  await page.goto('https://www.youtube.com/watch?v=J6MqpK91bEA');
 
   // Check for the chimney for white smoke
   const chimneyCheck = await page.visuallyAssert({
@@ -28,7 +28,7 @@ This assertion should ONLY pass if white smoke is clearly visible.`
   }
   
   // Check smoke color again after a short wait
-  await page.waitForTimeout(10000);
+  await page.waitForTimeout(10_000);
 
   const smokeCheck = await page.visuallyAssert({
     assertionToTestFor: `Is there white smoke visible from the chimney?
