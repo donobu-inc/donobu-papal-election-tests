@@ -44,11 +44,9 @@ A scheduled workflow runs the smoke test up to 60 times, stopping early on white
 
 ## Video Demo
 
-```md
 ![Autonomous Run Demo](demo/test_authoring_demo.gif)
 
 [View full video](demo/test_authoring_demo.mp4)
-```
 
 ---
 
