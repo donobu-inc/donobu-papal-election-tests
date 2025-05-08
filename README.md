@@ -1,6 +1,6 @@
 # Donobu Papal Election Smoke Test Demo
 
-A minimal demo using the Donobu NPM library to run an autonomous smoke test that checks for white smoke from the Sistine Chapel chimney during a papal election.
+A minimal demo using the [Donobu NPM](https://www.npmjs.com/package/donobu) library to run an autonomous smoke test that checks for white smoke from the Sistine Chapel chimney during a papal election.
 
 ---
 
@@ -8,7 +8,11 @@ A minimal demo using the Donobu NPM library to run an autonomous smoke test that
 
 * Node.js v20 or later
 * Playwright browsers installed (`npx playwright install --with-deps`)
-* `GOOGLE_GENERATIVE_AI_API_KEY` and `GOOGLE_GENERATIVE_AI_MODEL_NAME` for generative assertions
+* Environment variables supported for LLM providers:
+
+  * `OPENAI_API_KEY`, `OPENAI_API_MODEL_NAME`
+  * `GOOGLE_GENERATIVE_AI_API_KEY`, `GOOGLE_GENERATIVE_AI_MODEL_NAME`
+  * `ANTHROPIC_API_KEY`, `ANTHROPIC_MODEL_NAME`
 
 ---
 
@@ -58,3 +62,9 @@ A scheduled workflow runs the smoke test up to 60 times, stopping early on white
 
 Feel free to adjust schedules, timeouts, or assertion details to suit your own conclave watch.
 
+---
+
+## Links
+
+* Discord: [Join our Discord](https://discord.com/invite/xuyJmJCu)
+* NPM Package: [donobu on npm](https://www.npmjs.com/package/donobu)
