@@ -1,15 +1,16 @@
 name: Donobu Papal Election Smoke Test
 
 on:
-  schedule:
+  # commenting out the run schedule since new Pope has been elected on May 8th, 2025
+  # schedule:
     # start watch 30 min before 10:00 CEST → 07:30 UTC
-    - cron: '30 7 7-14 5 *'
+    # - cron: '30 7 7-14 5 *'
     # start watch 30 min before 12:00 CEST → 09:30 UTC
-    - cron: '30 9 7-14 5 *'
+    # - cron: '30 9 7-14 5 *'
     # start watch 30 min before 17:30 CEST → 15:00 UTC
-    - cron: '0 15 7-14 5 *'
+    # - cron: '0 15 7-14 5 *'
     # start watch 30 min before 19:00 CEST → 16:30 UTC
-    - cron: '30 16 7-14 5 *'
+    # - cron: '30 16 7-14 5 *'
   workflow_dispatch: {}
 
 jobs:
